@@ -27,9 +27,15 @@ const App: React.FC = () => {
     setTodos(updatedTodos);
   };
 
-
   const deleteTodo = (id: number) => {
     const updatedTodos = todos.filter((todo) => todo.id !== id);
+    setTodos(updatedTodos);
+  };
+
+  const editTodo = (id: number, newText: string) => {
+    const updatedTodos = todos.map((todo) =>
+      todo.id === id ? { ...todo, text: newText } : todo
+    );
     setTodos(updatedTodos);
   };
 
@@ -38,7 +44,7 @@ const App: React.FC = () => {
       <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md">
         <h1 className="text-2xl font-bold mb-4 text-center">Todo List</h1>
         <TodoInput addTodo={addTodo} />
-        <TodoList todos={todos} toggleComplete={toggleComplete} deleteTodo={deleteTodo} />
+        <TodoList todos={todos} toggleComplete={toggleComplete} deleteTodo={deleteTodo} editTodo={editTodo} />
       </div>
     </div>
   );
