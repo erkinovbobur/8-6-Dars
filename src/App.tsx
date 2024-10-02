@@ -32,6 +32,11 @@ const App: React.FC = () => {
     setTodos(updatedTodos);
   };
 
+  // Function to delete all todos
+  const deleteAllTodos = () => {
+    setTodos([]); // Clear all todos
+  };
+
   const editTodo = (id: number, newText: string) => {
     const updatedTodos = todos.map((todo) =>
       todo.id === id ? { ...todo, text: newText } : todo
@@ -45,6 +50,16 @@ const App: React.FC = () => {
         <h1 className="text-2xl font-bold mb-4 text-center">Todo List</h1>
         <TodoInput addTodo={addTodo} />
         <TodoList todos={todos} toggleComplete={toggleComplete} deleteTodo={deleteTodo} editTodo={editTodo} />
+        
+        {/* Add Delete All button */}
+        {todos.length > 0 && (
+          <button
+            onClick={deleteAllTodos}
+            className="mt-4 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700 transition"
+          >
+            Delete All
+          </button>
+        )}
       </div>
     </div>
   );
