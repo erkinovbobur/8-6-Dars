@@ -27,6 +27,7 @@ const App: React.FC = () => {
     setTodos(updatedTodos);
   };
 
+
   const deleteTodo = (id: number) => {
     const updatedTodos = todos.filter((todo) => todo.id !== id);
     setTodos(updatedTodos);
